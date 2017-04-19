@@ -1,11 +1,11 @@
 1. sudo docker-compose build
-	Собираем наш контейнер
+Собираем наш контейнер
 
 2. sudo docker-compose run --rm app sh
-	Заходим в контейнер
+Заходим в контейнер
 
 3. python manage.py migrate
-	Применяем миграции
+Применяем миграции
 
 4. python manage.py createsuperuser
 	Вводим данные которые нас попосят ввести
