@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-sm-6 col-sm-offset-1">
+	<h2>Запись на прием:</h2>
+	<dl class="row"> 
+		<dt class="col-sm-3">Врач:</dt>
+		<dd class="col-sm-9">{{name_doctor.full_name}}</dd>
+		<dt class="col-sm-3">Рабочие дни:</dt>
+		<dd class="col-sm-9">Пн, Вт, Ср, Чт, Пт, <span class="weekend">Cб, Вс</span></dd>
+		<dt class="col-sm-3">Время приема:</dt>
+		<dd class="col-sm-9">1 час</dd>
+		<dt class="col-sm-3">Время работы:</dt>
+		<dd class="col-sm-9">9:00 - 18:00</dd>
+	</dl>
+</div>
+<div class="col-sm-4">
+	<form role="form" method="POST">
+	{% csrf_token %}
+		{% if form.full_name.errors %}
+		<div class="form-group has-error has-feedback">
+			<label for="{{ form.full_name.label }}"><h2>Как Вас зовут?</h2></label>
+			<input type="text" class="form-control form-control-danger" id="{{ form.full_name.id_for_label }}" name="{{form.full_name.html_name}}" aria-describedby="nameHelp" placeholder="Фамилия Имя Отчество">
+		</div>
+		{% else %}
+			<div class="form-group">
+			{% csrf_token %}
+			<label for="{{ form.full_name.label }}"><h2>Как Вас зовут?</h2></label>
+			<input type="text" class="form-control" id="{{ form.full_name.id_for_label }}" name="{{form.full_name.html_name}}" aria-describedby="nameHelp" placeholder="Фамилия Имя Отчество">
+		</div>
+		{% endif %}
+		{% if form.date.errors %}
+		{{form.date.errors}}
+		<div class="form-group has-error has-feedback">
+			<div class="input-group date" id="datetimepicker2">
+				<input type="text" class="form-control" id="{{ form.date.id_for_label }}" name="{{form.date.html_name}}" />
+				<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+				</span>
+			</div>
+		</div>
+		{% else %}
+		<div class="form-group">
+			<div class="input-group date" id="datetimepicker2">
+				<input type="text" class="form-control" id="{{ form.date.id_for_label }}"  name="{{form.date.html_name}}"/>
+				<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+				</span>
+			</div>
+		</div>
+		{% endif %}
+	<button type="submit" class="btn btn-block btn-primary">Записаться!</button>
+	</form>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker2').datetimepicker(
+      {language: 'ru',
+  		}
+    );
+  });
+</script>
+{% endblock %}

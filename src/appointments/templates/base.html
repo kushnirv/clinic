@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>The list of doctors</title>
+	<link rel="stylesheet" href="{%static "bootstrap-3/css/bootstrap.min.css" %}" type="text/css"/>
+	<link rel="stylesheet" href="{%static "appointments.css" %}" type="text/css"/>
+
+
+
+	<script type="text/javascript" src="{%static "js/jquery.min.js" %}"></script>
+	<script type="text/javascript" src="{%static "js/moment/moment-with-locales.min.js" %}"></script>
+	<script type="text/javascript" src="{%static "bootstrap-3/js/bootstrap.min.js" %}"></script>
+	<script type="text/javascript" src="{%static "bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" %}"></script>
+	<link rel="stylesheet" href="{%static "bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" %}" type="text/css"/>
+
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row">
+		{% block content %}
+		{% endblock %}
+	</div>
+</div>
+</body>
+</html>
