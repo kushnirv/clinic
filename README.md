@@ -1,5 +1,5 @@
 1. sudo docker-compose build
-	-Собираем наш контейнер
+	- Собираем наш контейнер
 
 2. sudo docker-compose run --rm app sh
 	- Заходим в контейнер
